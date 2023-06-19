@@ -10,10 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- custom css file link  -->
- 
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/main.css') }}">
-    
-   
 </head>
 
 <body>
@@ -41,14 +38,13 @@
 <section class="home" id="home">
 
     <div class="content">
-        <h3>Ever wanted how mobile price range is decided ? </h3>
-        <p>Find about your mobile price range or just see based on your inputs, which range it will fall to! Click the button below and input the required specifications for the mobile phone!!</p>
+        <h3>Ever wondered how mobile price range is determined? </h3>
+        <p>Find out the price range of your mobile phone based on your inputs. Click the button below and input the required specifications for the mobile phone!!</p>
         <a href="#howitworks" class="btn">Predict Price Range!</a>
     </div>
 
     <div class="image">
-        
-         <img src="{{ url_for('static', filename= 'images/phones.png') }}">
+        <img src="{{ url_for('static', filename= 'images/phones.png') }}">
     </div>
 
 </section>
@@ -64,14 +60,13 @@
     <div class="box-container">
 
         <div class="box">
-       <p style="color: #fff;">This website is about predicting price range of a mobile phones. This price range has 4 categories. 
-       0 means LOW COST , 1 means MEDIUM COST , 2 means HIGH COST, 3 means VERY HIGH COST. This price range category is determined by whatever inputs you give. And it will tell you which category number it should fall to. Moreover</p>
+            <p style="color: #fff;">This website is about predicting the price range of mobile phones. The price range has 4 categories: 
+            0 means LOW COST, 1 means MEDIUM COST, 2 means HIGH COST, 3 means VERY HIGH COST. The price range category is determined by the inputs you provide. It will tell you which category number it should fall into. Moreover</p>
+        </div>
 
     </div>
 
 </section>
-
-
 
 <div class="step-container">
 
@@ -80,84 +75,78 @@
     <section class="steps">
 
         <div class="box">
-           <img src="{{ url_for('static', filename= 'images/step1.jpeg') }}">
-            <h3>Get ready your mobile specs</h3>
+            <img src="{{ url_for('static', filename= 'images/step1.jpeg') }}">
+            <h3>Get ready with your mobile specs</h3>
         </div>
         <div class="box">
-          <img src="{{ url_for('static', filename= 'images/step2.jpeg') }}">
-            <h3>Input whatever the form wants</h3>
+            <img src="{{ url_for('static', filename= 'images/step2.jpeg') }}">
+            <h3>Input the required details</h3>
         </div>
         <div class="box">
             <img src="{{ url_for('static', filename= 'images/step3.jpeg') }}">
-            <h3>Free and Fast Result Given</h3>
+            <h3>Get fast and accurate results</h3>
         </div>
         <div class="box">
-           <img src="{{ url_for('static', filename= 'images/step4.jpeg') }}">
-            <h3>and finally,range given to you!</h3>
+            <img src="{{ url_for('static', filename= 'images/step4.jpeg') }}">
+            <h3>Get the predicted price range!</h3>
         </div>
         
     </section>
 
 </div>
 
-
-
 <section class="order" id="howitworks">
 
     <h1 class="heading"> <span>Predict</span> now </h1>
-    <h2>All you have to input your variables and we will tell you the info LOL</h2>
+    <h2>All you need to do is input your variables, and we will provide the prediction!</h2>
     <div class="row">
 
        <form action="/predict" method="post">
 
             <div class="inputBox">
-                <input type="number" placeholder="total battery energy stored @ one time " name="battery_power">
-                <input type="number" placeholder="No. of Front Camera mega pixels"name="fc">
+                <input type="number" placeholder="Total battery energy stored at one time" name="battery_power">
+                <input type="number" placeholder="Number of Front Camera mega pixels" name="fc">
             </div>
 
             <div class="inputBox">
                 <input type="number" placeholder="Internal Memory in GB" name="int_memory">
-                <input type="number" placeholder="touch screen have or no - answer by 1 or 0 " name="touch_screen">
+                <input type="number" placeholder="Touch screen availability (1 for yes, 0 for no)" name="touch_screen">
             </div>
             <div class="inputBox">
-                <input type="float" placeholder="Mobile depth in cm " name="m_dep">
-                <input type="number" placeholder="Weight of mobile phone"name="mobile_wt">
+                <input type="number" placeholder="Mobile depth in cm" name="m_dep">
+                <input type="number" placeholder="Weight of mobile phone" name="mobile_wt">
             </div>
             <div class="inputBox">
                 <input type="number" placeholder="Number of cores of processor" name="n_cores">
-                <input type="number" placeholder="No. of Primary Camera mega pixels"name="pc">
+                <input type="number" placeholder="Number of Primary Camera mega pixels" name="pc">
             </div>
             <div class="inputBox">
-                <input type="number" placeholder="pixel resolution height" name="px_height">
-                <input type="number" placeholder="pixel resolution width"name="px_width">
+                <input type="number" placeholder="Pixel resolution height" name="px_height">
+                <input type="number" placeholder="Pixel resolution width" name="px_width">
             </div>
             <div class="inputBox">
-                <input type="number" placeholder="Ram in MB" name="ram">
-                <input type="number" placeholder="Screen Height of mobile in cm"name="sc_h">
+                <input type="number" placeholder="RAM in MB" name="ram">
+                <input type="number" placeholder="Screen Height of mobile in cm" name="sc_h">
             </div>
             <div class="inputBox">
                 <input type="number" placeholder="Screen Width of mobile in cm" name="sc_w">
-                <input type="number" placeholder="longest time that a single battery charge will last when you are using"name="talk_time">
+                <input type="number" placeholder="Longest time that a single battery charge will last when you are using" name="talk_time">
             </div>
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <label for="algorithm">Algorithm</label>
                 <select id="algorithm" name="algorithm" required>
                   <option value="svm">SVM</option>
-                  <option value="knn">KNN</option>
                   <option value="random_forest">Random Forest</option>
                   <option value="decision_tree">Decision Tree</option>
                 </select>
-              </div>
-               -->
-                <input type="submit" value="predict now" class="btn">
-                <h1> Price range falls in Category {{ mp }}</h1>
+            </div>
+            <input type="submit" value="Predict Now" class="btn">
+            <h1>Price range falls in Category {{ mp }}</h1>
         </form>
         <p>{{ mp }}</p>
     </div>
 
 </section>
-
-<!-- order section ends -->
 
 <!-- footer section  -->
 
@@ -167,13 +156,10 @@
         <a href="#" class="btn">Go Up</a>
     </div>
 
-
 </section>
 
 <!-- scroll top button  -->
 <a href="#home" class="fas fa-angle-up" id="scroll-top"></a>
-
-
 
 </body>
 </html>

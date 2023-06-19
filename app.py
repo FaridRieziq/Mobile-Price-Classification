@@ -5,9 +5,8 @@ import joblib
 app = Flask(__name__)
 
 # Load models
-svm_model = joblib.load('models/trained_mobile_svm_updated_final.pkl')
+svm_model = joblib.load('models/svm.pkl')
 decision_tree_model = joblib.load('models/decisionTreeClassifier.pkl')
-lgr_model = joblib.load('models/trained_mobile_logisticRegressor.pkl')
 random_forest_model = joblib.load('models/randomForest.pkl')
 
 @app.route('/')
