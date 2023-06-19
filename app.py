@@ -3,7 +3,12 @@ from flask import Flask, request, render_template, redirect
 import joblib
 
 app = Flask(__name__)
-model = joblib.load('models/trained_mobile_svm_updated_final.pkl')
+
+# Load models
+svm_model = joblib.load('models/trained_mobile_svm_updated_final.pkl')
+decision_tree_model = joblib.load('models/decisionTreeClassifier.pkl')
+lgr_model = joblib.load('models/trained_mobile_logisticRegressor.pkl')
+random_forest_model = joblib.load('models/randomForest.pkl')
 
 @app.route('/')
 def home():
@@ -17,7 +22,17 @@ def result():
 @app.route('/predict', methods=['POST'])
 def predict():
     form_data = [x for x in request.form.values()]
-    features = [np.array(form_data)]
+    features = [np.array(form_data[:-1])]  # Exclude the algorithm selection from features
+    algorithm = form_data[-1]  # Get the selected algorithm
+    if algorithm == 'svm':
+        model = svm_model
+    elif algorithm == 'decision_tree':
+        model = decision_tree_model
+    elif algorithm == 'random_forest':
+        model = random_forest_model
+    else:
+        return redirect('/result?prediction=Invalid algorithm')
+
     prediction = model.predict(features)
     return redirect('/result?prediction=' + str(prediction[0]))
 
